@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for("static", filename="wallpaper.jpg") }}') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.35);
+            min-height: 100vh;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 boxes per row */
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .box {
+            background-color: rgba(0, 123, 255, 0.8);
+            padding: 12px 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            background-color: rgba(0, 86, 179, 0.9);
+            transform: scale(1.05);
+        }
+
+        .empty {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>System Administrator Dashboard</h1>
+
+        <div class="grid">
+            {% for item in shortcuts %}
+                <a class="box" href="{{ item.url }}" target="_blank">
+                    {{ item.name }}
+                </a>
+            {% endfor %}
+
+            <!-- Empty Boxes -->
+        </div>
+
+    </div>
+</body>
+</html>
